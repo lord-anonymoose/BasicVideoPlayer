@@ -10,12 +10,11 @@ import UIKit
 
 class VideoView: UIView {
     
-    //var video: YouTubeVideo
+
     
     // MARK: - Subviews
     let titleLabel: UILabel = {
         let label = UILabel()
-        //label.textColor = UIColor.textColor
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize:20, weight: .bold)
@@ -30,6 +29,8 @@ class VideoView: UIView {
         return label
     }()
     
+    
+    
     // MARK: - Lifecycle
     
     init(frame: CGRect, video: YouTubeVideo) {
@@ -38,8 +39,9 @@ class VideoView: UIView {
         setupConstraints()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        addSubviews(video: defaultVideo)
         setupConstraints()
     }
     
@@ -65,7 +67,6 @@ class VideoView: UIView {
             authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             authorLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
-        
     }
     
 }

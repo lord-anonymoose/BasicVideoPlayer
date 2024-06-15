@@ -14,7 +14,8 @@ class VideoViewCell: UITableViewCell {
     
     // MARK: - Subviews
     private lazy var videoView: VideoView = {
-        let view = VideoView(frame: .null, video: defaultVideo)
+        let view = VideoView(frame: .zero, video: defaultVideo)
+        view.backgroundColor = .green
         return view
     }()
     
@@ -25,12 +26,6 @@ class VideoViewCell: UITableViewCell {
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, video: YouTubeVideo) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews(video: video)
-        setupConstraints()
-    }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubviews(video: defaultVideo)
         setupConstraints()
     }
     
@@ -45,6 +40,8 @@ class VideoViewCell: UITableViewCell {
     // MARK: - Private
     private func addSubviews(video: YouTubeVideo) {
         contentView.addSubview(videoView)
+        videoView.titleLabel.text = video.title
+        videoView.authorLabel.text = video.author
     }
     
     private func setupConstraints() {
@@ -52,8 +49,6 @@ class VideoViewCell: UITableViewCell {
             videoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             videoView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             videoView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            videoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
             videoView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }

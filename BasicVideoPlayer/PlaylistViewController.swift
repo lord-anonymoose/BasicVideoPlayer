@@ -9,6 +9,8 @@ import YouTubeiOSPlayerHelper
 
 class PlaylistViewController: UIViewController {
     
+    
+    
     // MARK: Subviews
         
     private lazy var playlistView: UITableView = {
@@ -17,7 +19,6 @@ class PlaylistViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-        
         
         
         
@@ -74,14 +75,17 @@ class PlaylistViewController: UIViewController {
 
 extension PlaylistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //myPlaylist.count
-        10
+        myPlaylist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = VideoViewCell()
-        let cell = VideoViewCell(style: .default, reuseIdentifier: "cell", video: defaultVideo)
+        let video = myPlaylist[indexPath.row]
+        let cell = VideoViewCell(style: .default, reuseIdentifier: "cell", video: video)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
     }
 }
 
