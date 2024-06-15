@@ -20,7 +20,7 @@ struct YouTubeVideo {
     }
 }
 
-var myPlaylist: [YouTubeVideo] = [
+let myPlaylist: [YouTubeVideo] = [
     YouTubeVideo(id: "Q_EYoV1kZWk", title: "Apple Intelligence in 5 minutes", author: "Apple"),
     YouTubeVideo(id: "pMX2cQdPubk", title: "Talking Tech and AI with Tim Cook!", author: "Marques Brownlee"),
     YouTubeVideo(id: "kQUJfpcSRQ0", title: "Franz Beckenbauer - Gute Freunde kann niemand trennen", author: "Schlagermusikgirl25"),
@@ -28,3 +28,5 @@ var myPlaylist: [YouTubeVideo] = [
     YouTubeVideo(id: "WN_dhiDmQ-c", title: "UEFA Euro 2024 | Official Intro", author: "Football Time"),
     YouTubeVideo(id: "W9S7S67V2BY", title: "OFFICIAL: Deutschland Torhymne (Germany Goal Song)", author: "Elite Goal Horns"),
 ]
+
+let defaultVideo = YouTubeVideo(id: "jNQXAC9IVRw", title: "Me at the zoo", author: "jawed")
