@@ -9,23 +9,13 @@ import YouTubeiOSPlayerHelper
 
 class PlaylistViewController: UIViewController {
     
-    
-
-    private lazy var streamURL = URL(string: "https://www.youtube.com/embed/bq1gSj53Hw4")!
-
-    private lazy var localURL: URL = {
-        let path = Bundle.main.path(forResource: "test", ofType: "mp4")!
-        return URL(fileURLWithPath: path)
-    }()
-
-    
-    
     // MARK: Subviews
         
-    private lazy var recordButton: UIButton = {
-        let button = UIButton()
-            
-        return button
+    private lazy var playlistView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .systemBlue
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
         
         
@@ -37,6 +27,7 @@ class PlaylistViewController: UIViewController {
         setupUI()
         addSubviews()
         setupConstraints()
+        setupDelegates()
         super.viewDidLoad()
     }
         
@@ -44,36 +35,56 @@ class PlaylistViewController: UIViewController {
         
     // MARK: - Actions
         
+    /*
     @objc private func exampleFunc(_ sender: Any) {
 
     }
+    */
         
 
         
-        // MARK: - Private
+    // MARK: - Private
         
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .lightGray
     }
         
     private func addSubviews() {
-        //view.addSubview(imageView)
+        view.addSubview(playlistView)
     }
         
     private func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
-        let spacing = view.frame.size.width / 3
             
         NSLayoutConstraint.activate([
-
+            playlistView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            playlistView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            playlistView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            playlistView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor)
         ])
     }
     
+    private func setupDelegates() {
+        playlistView.delegate = self
+        playlistView.dataSource = self
+        playlistView.register(VideoViewCell.self, forCellReuseIdentifier: "cell")
+    }
     
-    
-    // MARK: - Private
-        private func checkRecordPermission() {
-
-        }
 }
 
+extension PlaylistViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //myPlaylist.count
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let cell = VideoViewCell()
+        let cell = UITableViewCell()
+        return cell
+    }
+}
+
+extension PlaylistViewController: UITableViewDelegate {
+    
+}

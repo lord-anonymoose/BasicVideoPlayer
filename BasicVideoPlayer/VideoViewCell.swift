@@ -15,6 +15,7 @@ class VideoViewCell: UITableViewCell {
     // MARK: - Subviews
     private lazy var videoView: VideoView = {
         let view = VideoView()
+        view.backgroundColor = .brown
         return view
     }()
     
@@ -52,7 +53,9 @@ class VideoViewCell: UITableViewCell {
             videoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             videoView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             videoView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            videoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            videoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            videoView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 }
