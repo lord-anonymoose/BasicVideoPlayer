@@ -80,7 +80,7 @@ extension PlaylistViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = VideoViewCell()
-        let cell = UITableViewCell()
+        let cell = VideoViewCell(style: .default, reuseIdentifier: "cell", video: defaultVideo)
         return cell
     }
 }
