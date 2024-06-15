@@ -15,7 +15,8 @@ class VideoViewCell: UITableViewCell {
     // MARK: - Subviews
     private lazy var videoView: VideoView = {
         let view = VideoView(frame: .zero, video: defaultVideo)
-        view.backgroundColor = .green
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -36,20 +37,19 @@ class VideoViewCell: UITableViewCell {
     }
     
     
-    
     // MARK: - Private
     private func addSubviews(video: YouTubeVideo) {
         contentView.addSubview(videoView)
         videoView.titleLabel.text = video.title
         videoView.authorLabel.text = video.author
+        videoView.youTubeVideo.load(withVideoId: video.id)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            videoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            videoView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            videoView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            videoView.trailingAnchor.constraint(equalTo: trailingAnchor),
             videoView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            videoView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
 }

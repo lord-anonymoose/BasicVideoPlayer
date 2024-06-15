@@ -15,7 +15,6 @@ class PlaylistViewController: UIViewController {
         
     private lazy var playlistView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemBlue
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -35,13 +34,6 @@ class PlaylistViewController: UIViewController {
         
         
     // MARK: - Actions
-        
-    /*
-    @objc private func exampleFunc(_ sender: Any) {
-
-    }
-    */
-        
 
         
     // MARK: - Private
@@ -85,7 +77,7 @@ extension PlaylistViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        view.frame.width * 0.8
     }
 }
 
