@@ -39,7 +39,7 @@ class PlaylistViewController: UIViewController {
     // MARK: - Private
         
     private func setupUI() {
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemBackground
     }
         
     private func addSubviews() {
